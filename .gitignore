@@ -46,3 +46,6 @@ next-env.d.ts
 
 # generated: single-paste migration bundle (see README)
 supabase/apply_all.sql
+
+# supabase cli scratch
+supabase/.temp/

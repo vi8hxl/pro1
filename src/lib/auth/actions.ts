@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { hasSupabaseEnv } from "@/lib/supabase/env";
 import {
   completeOnboarding as completeOnboardingRecord,
   getProfileGate,
@@ -23,6 +24,11 @@ export interface AuthFormState {
   success?: string;
 }
 
+const NOT_CONFIGURED: AuthFormState = {
+  error:
+    "Rentless is not connected to a database yet. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to .env.local, then restart the dev server.",
+};
+
 function firstIssue(issues: Array<{ message?: string }>): string {
   return issues[0]?.message ?? "Please check the form and try again";
 }
@@ -38,6 +44,8 @@ export async function signUpWithEmail(
   _prev: AuthFormState,
   formData: FormData,
 ): Promise<AuthFormState> {
+  if (!hasSupabaseEnv()) return NOT_CONFIGURED;
+
   const parsed = signupSchema.safeParse({
     role: formData.get("role"),
     full_name: formData.get("full_name"),
@@ -86,6 +94,8 @@ export async function signInWithEmail(
   _prev: AuthFormState,
   formData: FormData,
 ): Promise<AuthFormState> {
+  if (!hasSupabaseEnv()) return NOT_CONFIGURED;
+
   const parsed = emailLoginSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
@@ -108,6 +118,7 @@ export async function sendPhoneOtp(
   _prev: AuthFormState,
   formData: FormData,
 ): Promise<AuthFormState> {
+  if (!hasSupabaseEnv()) return NOT_CONFIGURED;
   if (!PHONE_AUTH_ENABLED) {
     return { error: "Phone sign-in is not enabled yet." };
   }
@@ -123,6 +134,7 @@ export async function verifyPhoneOtp(
   _prev: AuthFormState,
   formData: FormData,
 ): Promise<AuthFormState> {
+  if (!hasSupabaseEnv()) return NOT_CONFIGURED;
   if (!PHONE_AUTH_ENABLED) {
     return { error: "Phone sign-in is not enabled yet." };
   }
@@ -148,6 +160,8 @@ export async function completeOnboarding(
   _prev: AuthFormState,
   formData: FormData,
 ): Promise<AuthFormState> {
+  if (!hasSupabaseEnv()) return NOT_CONFIGURED;
+
   const parsed = completeProfileSchema.safeParse({
     role: formData.get("role"),
     full_name: formData.get("full_name"),
@@ -179,6 +193,8 @@ export async function updateAccount(
   _prev: AuthFormState,
   formData: FormData,
 ): Promise<AuthFormState> {
+  if (!hasSupabaseEnv()) return NOT_CONFIGURED;
+
   const parsed = updateProfileSchema.safeParse({
     full_name: formData.get("full_name") || undefined,
     locale: formData.get("locale") || undefined,
@@ -211,6 +227,7 @@ export async function updateAccount(
 }
 
 export async function signOut(): Promise<void> {
+  if (!hasSupabaseEnv()) redirect("/");
   const supabase = await createClient();
   await supabase.auth.signOut();
   redirect("/");
@@ -220,6 +237,8 @@ export async function acceptInviteAction(
   _prev: AuthFormState,
   formData: FormData,
 ): Promise<AuthFormState> {
+  if (!hasSupabaseEnv()) return NOT_CONFIGURED;
+
   const token = String(formData.get("token") ?? "").trim();
   if (!token) return { error: "This invite link is incomplete." };
 
