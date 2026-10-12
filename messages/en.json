@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "title": "Rentless — Rent made simple",
+    "description": "Rentless connects building owners with their tenants to track rent, pending dues and how long each tenant has stayed — all in one simple app that works great on a phone."
+  },
+  "common": {
+    "appName": "Rentless",
+    "tagline": "Rent made simple.",
+    "login": "Log in",
+    "signup": "Sign up",
+    "getStarted": "Get started",
+    "language": "Language",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "loading": "Loading…",
+    "retry": "Try again",
+    "backHome": "Back to home"
+  },
+  "nav": {
+    "features": "Features",
+    "howItWorks": "How it works",
+    "forOwners": "For owners",
+    "forTenants": "For tenants"
+  },
+  "landing": {
+    "badge": "Built for Indian landlords and tenants",
+    "title": "Rent, tracked without the chasing.",
+    "subtitle": "Rentless keeps your buildings, tenants, rent and pending dues in one place — with automatic reminders and receipts. Works beautifully on a phone.",
+    "primaryCta": "Start free",
+    "secondaryCta": "See how it works",
+    "stats": {
+      "tenants": "Tenants managed",
+      "collected": "Rent collected",
+      "receipts": "Receipts issued"
+    },
+    "features": {
+      "title": "Everything rent, in one place",
+      "subtitle": "From the first payment to the final receipt.",
+      "items": {
+        "dues": {
+          "title": "Dues at a glance",
+          "body": "See who has paid, who is pending and who is overdue — colour coded so nothing slips."
+        },
+        "auto": {
+          "title": "Automatic rent",
+          "body": "Rent charges are generated every month on the due day, so you never raise them by hand."
+        },
+        "partial": {
+          "title": "Partial & advance",
+          "body": "Record part payments and advances; balances and history update instantly."
+        },
+        "reminders": {
+          "title": "Gentle reminders",
+          "body": "Email and one-tap WhatsApp reminders that keep tenants on time."
+        },
+        "reports": {
+          "title": "Receipts & reports",
+          "body": "Download PDF receipts plus monthly or yearly collected-vs-pending reports."
+        },
+        "tenantApp": {
+          "title": "Tenants stay informed",
+          "body": "Tenants see their rent, dues, due date and full history on their own phone."
+        }
+      }
+    },
+    "how": {
+      "title": "How Rentless works",
+      "subtitle": "Set up once, then let it run.",
+      "steps": {
+        "one": {
+          "title": "Add buildings & flats",
+          "body": "List your buildings and apartments with monthly rent and deposit."
+        },
+        "two": {
+          "title": "Invite your tenants",
+          "body": "Send an invite link — tenants link their account in seconds."
+        },
+        "three": {
+          "title": "Track everything",
+          "body": "Payments, dues, reminders and reports happen automatically."
+        }
+      }
+    },
+    "roles": {
+      "title": "One app, two experiences",
+      "subtitle": "Owners manage. Tenants stay informed. Everyone sees only what they should.",
+      "owners": {
+        "title": "For owners",
+        "points": {
+          "one": "A dashboard of expected, collected and pending rent",
+          "two": "Buildings, flats and tenant records",
+          "three": "Payments, receipts and reports",
+          "four": "Automatic reminders and move-out settlement"
+        }
+      },
+      "tenants": {
+        "title": "For tenants",
+        "points": {
+          "one": "Your monthly rent and pending amount",
+          "two": "Next due date and time lived in the flat",
+          "three": "Full payment history and receipts",
+          "four": "Raise maintenance requests in a tap"
+        }
+      }
+    },
+    "cta": {
+      "title": "Start managing rent today",
+      "body": "Free to try. No card needed. Works on any phone.",
+      "button": "Create your account"
+    }
+  },
+  "footer": {
+    "tagline": "Rent, tracked without the chasing.",
+    "product": "Product",
+    "account": "Account",
+    "features": "Features",
+    "howItWorks": "How it works",
+    "login": "Log in",
+    "signup": "Sign up",
+    "rights": "All rights reserved.",
+    "madeWith": "Made for landlords and tenants in India."
+  },
+  "states": {
+    "emptyTitle": "Nothing here yet",
+    "emptyBody": "When there is something to show, it will appear here.",
+    "errorTitle": "Something went wrong",
+    "errorBody": "We couldn't load this. Please try again."
+  },
+  "offline": {
+    "title": "You're offline",
+    "body": "Rentless needs a connection for the latest numbers. Reconnect and we'll refresh your rent details.",
+    "retry": "Retry"
+  }
+}

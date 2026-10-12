@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" width="200" height="48" role="img" aria-label="Rentless">
+  <rect width="48" height="48" rx="13" fill="#4f46e5"/>
+  <g fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15.5 18.5 24 11.5l8.5 7"/>
+    <path d="M19 24.5h10"/>
+    <path d="M19 29.5h8.5"/>
+    <path d="M19.5 23.5v15"/>
+    <path d="M25 29.5 31 38"/>
+  </g>
+  <text x="60" y="32" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="600" fill="#0f172a">Rentless</text>
+  <circle cx="176" cy="33" r="3" fill="#14b8a6"/>
+</svg>
