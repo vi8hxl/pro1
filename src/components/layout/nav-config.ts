@@ -24,6 +24,7 @@ export const OWNER_NAV: NavItem[] = [
   { href: "/owner/buildings", labelKey: "nav.buildings", icon: Building2Icon },
   { href: "/owner/tenants", labelKey: "nav.tenants", icon: UsersIcon },
   { href: "/owner/payments", labelKey: "nav.payments", icon: CreditCardIcon },
+  { href: "/owner/maintenance", labelKey: "nav.maintenance", icon: LifeBuoyIcon },
   { href: "/owner/reports", labelKey: "nav.reports", icon: FileTextIcon },
   { href: "/owner/settings", labelKey: "nav.settings", icon: SettingsIcon },
 ];
