@@ -1,6 +1,8 @@
 "use client";
 
-import { UsersIcon } from "lucide-react";
+import { useState } from "react";
+import { CheckIcon, CopyIcon, LinkIcon, UsersIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/shared/empty-state";
 import { Money } from "@/components/shared/money";
 import { StatusBadge, type ChargeStatus } from "@/components/shared/status-badge";
@@ -33,6 +35,27 @@ function livedFor(moveIn: string, t: (k: string) => string): string {
   return parts.join(" ");
 }
 
+function InviteCell({ token }: { token: string }) {
+  const t = useI18n().t;
+  const [copied, setCopied] = useState(false);
+
+  return (
+    <Button
+      type="button"
+      variant="outline"
+      size="xs"
+      onClick={() => {
+        const url = `${window.location.origin}/invite/${token}`;
+        void navigator.clipboard.writeText(url);
+        setCopied(true);
+      }}
+    >
+      {copied ? <CheckIcon aria-hidden /> : <CopyIcon aria-hidden />}
+      {copied ? t("tenants.copied") : t("tenants.copyInvite")}
+    </Button>
+  );
+}
+
 export function TenantTable({ tenancies }: { tenancies: TenancyListItem[] }) {
   const { t, locale } = useI18n();
 
@@ -49,6 +72,7 @@ export function TenantTable({ tenancies }: { tenancies: TenancyListItem[] }) {
           <TableHead className="text-right">{t("dash.pending")}</TableHead>
           <TableHead>{t("dash.lived")}</TableHead>
           <TableHead>{t("dash.lastPayment")}</TableHead>
+          <TableHead>{t("tenants.account")}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -73,6 +97,18 @@ export function TenantTable({ tenancies }: { tenancies: TenancyListItem[] }) {
               {item.last_payment_on
                 ? formatDate(item.last_payment_on, { locale, style: "short" })
                 : "—"}
+            </TableCell>
+            <TableCell>
+              {item.tenant_id ? (
+                <span className="inline-flex items-center gap-1 text-xs text-success">
+                  <LinkIcon className="size-3.5" aria-hidden />
+                  {t("tenants.linked")}
+                </span>
+              ) : item.invite_token ? (
+                <InviteCell token={item.invite_token} />
+              ) : (
+                <span className="text-xs text-muted-foreground">{t("tenants.notInvited")}</span>
+              )}
             </TableCell>
           </TableRow>
         ))}

@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { connection } from "next/server";
 import { MaintenanceForm } from "@/components/tenant/maintenance-form";
 import { MaintenanceHistory } from "@/components/tenant/maintenance-history";
-import { EmptyState } from "@/components/shared/empty-state";
+import { UnlinkedTenantNotice } from "@/components/tenant/unlinked-notice";
 import { LoadingSkeleton } from "@/components/shared/loading";
 import { PageHeading } from "@/components/shared/page-heading";
 import { requireTenant } from "@/lib/auth/require";
@@ -16,7 +16,7 @@ async function MaintenanceData() {
   const { supabase } = await requireTenant();
 
   const home = await getTenantHome(supabase);
-  if (!home) return <EmptyState />;
+  if (!home) return <UnlinkedTenantNotice />;
 
   const requests = await listMaintenanceRequests(supabase);
 

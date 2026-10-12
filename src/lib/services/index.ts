@@ -7,4 +7,5 @@ export * from "./payments";
 export * from "./dashboard";
 export * from "./maintenance";
 export * from "./notifications";
+export * from "./reminders";
 export * from "./reports";

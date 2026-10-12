@@ -9,12 +9,21 @@ import { formatDate } from "@/lib/dates";
 import { requireUser } from "@/lib/auth/require";
 import { markAllNotificationsReadAction } from "@/lib/actions/notifications";
 import { listNotifications } from "@/lib/services/notifications";
+import { syncMyReminders } from "@/lib/services/reminders";
 
 export const metadata = { title: "Notifications" };
 
 async function NotificationsData() {
   await connection();
   const { supabase } = await requireUser();
+
+  // Make sure any rent due/overdue reminders exist before listing.
+  try {
+    await syncMyReminders(supabase);
+  } catch {
+    // Function not deployed yet (migration 0010) — show what we have.
+  }
+
   const notifications = await listNotifications(supabase, { limit: 50 });
 
   if (notifications.length === 0) {

@@ -604,6 +604,10 @@ export interface Database {
         };
         Returns: undefined;
       };
+      rpc_sync_my_reminders: {
+        Args: Record<string, never>;
+        Returns: number;
+      };
     };
     Enums: {
       user_role: UserRole;

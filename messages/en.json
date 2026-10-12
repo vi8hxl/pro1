@@ -101,6 +101,8 @@
     "livedHere": "Lived here",
     "history": "Payment history",
     "historySubtitle": "Every payment you have made.",
+    "unlinkedTitle": "Not linked to a flat yet",
+    "unlinkedBody": "Your account isn't connected to a tenancy. Ask your building owner for the invite link, open it, and your rent will appear here.",
     "callOwner": "Call owner"
   },
   "pay": {
@@ -152,7 +154,11 @@
     "needFlat": "Add a flat first — a tenant needs somewhere to live.",
     "inviteLink": "Invite link — send this so they can link their account",
     "copy": "Copy",
-    "copied": "Copied"
+    "copied": "Copied",
+    "copyInvite": "Copy invite",
+    "account": "Account",
+    "linked": "Linked",
+    "notInvited": "Not invited"
   },
   "reports": {
     "heading": "Reports",

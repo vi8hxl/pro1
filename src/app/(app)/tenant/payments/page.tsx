@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { connection } from "next/server";
 import { PaymentList } from "@/components/tenant/payment-list";
-import { EmptyState } from "@/components/shared/empty-state";
+import { UnlinkedTenantNotice } from "@/components/tenant/unlinked-notice";
 import { LoadingSkeleton } from "@/components/shared/loading";
 import { PageHeading } from "@/components/shared/page-heading";
 import { SectionCard } from "@/components/shared/section-card";
@@ -16,7 +16,7 @@ async function HistoryData() {
   const { supabase } = await requireTenant();
 
   const home = await getTenantHome(supabase);
-  if (!home) return <EmptyState />;
+  if (!home) return <UnlinkedTenantNotice />;
 
   const payments = await listPaymentsByTenancy(supabase, home.tenancy_id);
   return <PaymentList payments={payments} />;
