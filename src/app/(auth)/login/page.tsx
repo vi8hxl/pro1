@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { AuthComingSoon } from "@/components/auth/auth-coming-soon";
+import { AuthCard } from "@/components/auth/auth-card";
+import { LoginForm } from "@/components/auth/login-form";
 
 export const metadata: Metadata = { title: "Log in" };
 
 export default function LoginPage() {
-  return <AuthComingSoon mode="login" />;
+  return (
+    <AuthCard titleKey="auth.loginTitle" subtitleKey="auth.loginSubtitle">
+      <LoginForm />
+    </AuthCard>
+  );
 }

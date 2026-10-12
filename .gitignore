@@ -43,3 +43,6 @@ next-env.d.ts
 
 # local logs
 *.log
+
+# generated: single-paste migration bundle (see README)
+supabase/apply_all.sql

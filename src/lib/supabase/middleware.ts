@@ -1,15 +1,16 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
-import type { User } from "@supabase/supabase-js";
+import type { SupabaseClient, User } from "@supabase/supabase-js";
 import type { Database } from "@/types/database";
 
 /**
- * Refreshes the Supabase session and returns the current user.
- * Called from src/proxy.ts (Next.js 16's renamed middleware).
+ * Refreshes the Supabase session and returns the current user plus a client
+ * that can make further queries (used by src/proxy.ts for role guards).
  */
 export async function updateSession(request: NextRequest): Promise<{
   response: NextResponse;
   user: User | null;
+  supabase: SupabaseClient<Database> | null;
 }> {
   let response = NextResponse.next({ request });
 
@@ -18,7 +19,7 @@ export async function updateSession(request: NextRequest): Promise<{
 
   // Before Supabase is configured, don't block the app — just pass through.
   if (!url || !anonKey) {
-    return { response, user: null };
+    return { response, user: null, supabase: null };
   }
 
   const supabase = createServerClient<Database>(url, anonKey, {
@@ -43,5 +44,5 @@ export async function updateSession(request: NextRequest): Promise<{
     data: { user },
   } = await supabase.auth.getUser();
 
-  return { response, user };
+  return { response, user, supabase };
 }
